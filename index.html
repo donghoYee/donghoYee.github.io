@@ -22,6 +22,8 @@
     <a class="brand" href="#top">Dongho Yee</a>
     <ul>
       <li><a href="#research">Research</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#earlier">Earlier work</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -71,8 +73,8 @@
   <article class="work">
     <div class="media">
       <figure>
-        <video controls preload="metadata" poster="assets/video_poster.jpg" playsinline>
-          <source src="assets/icra2027_invivo.mp4" type="video/mp4">
+        <video controls preload="metadata" poster="assets/video/invivo_poster.jpg" playsinline>
+          <source src="assets/video/invivo.mp4" type="video/mp4">
         </video>
         <figcaption>Supplementary video of the ICRA 2027 submission (2 min 41 s): from hand-held demonstrations to in-vivo execution.</figcaption>
       </figure>
@@ -185,6 +187,66 @@
       <p>My senior thesis, with Ph.D. student Somang Lee, is on tactile sensing for humanoid hands. I added a Pasternak-foundation tactile module to the lab's CRISP simulator so that stress propagates between neighboring taxels, which Winkler-type contact models cannot do, and benchmarked seven simulators against FEniCSx FEM on four indenters: peak-pressure error of 4–17% at about 0.5 ms per frame on a 60 × 60 grid. I am now identifying the elastomer, friction and per-taxel parameters of a commercial fingertip sensor from robot indentation data with a differentiable forward model, for CRISP and Isaac Sim/Newton.</p>
     </div>
   </article>
+</section>
+
+
+<section id="videos" class="wrap">
+  <h2>Videos</h2>
+  <p class="small muted">Supplementary videos of the six ICRA 2027 submissions from the Rosota team. Each starts on demand; nothing downloads until you press play.</p>
+  <div class="videos">
+    <figure>
+      <video controls preload="none" poster="assets/video/invivo_poster.jpg" playsinline><source src="assets/video/invivo.mp4" type="video/mp4"></video>
+      <figcaption><strong>From instrument-mounted demonstrations to in-vivo execution</strong> · D. Yee et al. · first author · 2:41<br>A policy trained only on hand-held demonstrations performs appendectomy with electrosurgery in live rabbits.</figcaption>
+    </figure>
+    <figure>
+      <video controls preload="none" poster="assets/video/uwb_poster.jpg" playsinline><source src="assets/video/uwb.mp4" type="video/mp4"></video>
+      <figcaption><strong>Drape-compatible tool-tip localization via UWB carrier phase</strong> · J. Lee, D. Yee et al. · co-first author · 2:21<br>Sub-millimetre ranging between instruments through the sterile drape, resolved with the trocar's geometry.</figcaption>
+    </figure>
+    <figure>
+      <video controls preload="none" poster="assets/video/vision_poster.jpg" playsinline><source src="assets/video/vision.mp4" type="video/mp4"></video>
+      <figcaption><strong>Recording hand-held instrument motion in the operating room</strong> · J. Lee et al. · co-author · 2:57<br>Magnetometer-free fusion of inertial, range and visual sensing under the trocar constraint.</figcaption>
+    </figure>
+    <figure>
+      <video controls preload="none" poster="assets/video/masterconsole_poster.jpg" playsinline><source src="assets/video/masterconsole.mp4" type="video/mp4"></video>
+      <figcaption><strong>Surgical master console from general-purpose robot arms</strong> · M. Kim, S. Shim et al. · co-author · 2:54<br>A separable 2-DoF wrist and grasp interface on commodity arms, used in a porcine cholecystectomy.</figcaption>
+    </figure>
+    <figure>
+      <video controls preload="none" poster="assets/video/simulation_poster.jpg" playsinline><source src="assets/video/simulation.mp4" type="video/mp4"></video>
+      <figcaption><strong>Contact-stable deformable tissue simulation</strong> · J. Oh et al. · co-author · 1:00<br>Organs reconstructed from one RGB-D recording, grasped and lifted by two FR3 arms through trocars.</figcaption>
+    </figure>
+    <figure>
+      <video controls preload="none" poster="assets/video/ultrasound_poster.jpg" playsinline><source src="assets/video/ultrasound.mp4" type="video/mp4"></video>
+      <figcaption><strong>Contact-adaptive robotic ultrasound from robot-free demonstrations</strong> · S. Jeong et al. · co-author · 3:00<br>A probe-holding robot keeps a clinician-selected view while the tissue and contact change.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="gallery" class="wrap">
+  <h2>Gallery</h2>
+  <div class="gallery">
+    <figure><a href="assets/gallery/g_or_invivo.jpg"><img src="assets/gallery/g_or_invivo.jpg" alt="" loading="lazy"></a><figcaption>Two FR3 arms under policy control in the live-rabbit appendectomy, Seoul National University Hospital.</figcaption></figure>
+    <figure><a href="assets/gallery/g_demo_collection.jpg"><img src="assets/gallery/g_demo_collection.jpg" alt="" loading="lazy"></a><figcaption>A surgeon records in-vivo demonstrations with SurgiLogger on ordinary hand-held instruments.</figcaption></figure>
+    <figure><a href="assets/gallery/g_cautery.jpg"><img src="assets/gallery/g_cautery.jpg" alt="" loading="lazy"></a><figcaption>The moment the policy fires electrosurgery; the cutting jaw was closed at every cautery sample.</figcaption></figure>
+    <figure><a href="assets/gallery/g_rabbits.jpg"><img src="assets/gallery/g_rabbits.jpg" alt="" loading="lazy"></a><figcaption>The four in-vivo rollouts; three completed the appendectomy, the fourth was stopped by the controller before the policy acted.</figcaption></figure>
+    <figure><a href="assets/gallery/g_surgilogger_open.jpg"><img src="assets/gallery/g_surgilogger_open.jpg" alt="" loading="lazy"></a><figcaption>SurgiLogger with the enclosure open: nRF52840, BNO085 IMU, time-of-flight sensor, battery.</figcaption></figure>
+    <figure><a href="assets/gallery/g_logger_phantom.jpg"><img src="assets/gallery/g_logger_phantom.jpg" alt="" loading="lazy"></a><figcaption>The logger on a grasper in the laparoscopic phantom; the trocar leaves the instrument four degrees of freedom.</figcaption></figure>
+    <figure><a href="assets/gallery/g_latency.jpg"><img src="assets/gallery/g_latency.jpg" alt="" loading="lazy"></a><figcaption>Per-channel latency measured against the FR3: a 349 ms first-order lag on insertion depth.</figcaption></figure>
+    <figure><a href="assets/gallery/g_action_chunk.jpg"><img src="assets/gallery/g_action_chunk.jpg" alt="" loading="lazy"></a><figcaption>Observation and 16-step action chunk of the policy, displayed live during a demonstration.</figcaption></figure>
+    <figure><a href="assets/gallery/g_fr3_rig.jpg"><img src="assets/gallery/g_fr3_rig.jpg" alt="" loading="lazy"></a><figcaption>Our lab: the dual-FR3 patient-side platform and the master console built from two 6-DoF arms.</figcaption></figure>
+    <figure><a href="assets/gallery/g_master_or.jpg"><img src="assets/gallery/g_master_or.jpg" alt="" loading="lazy"></a><figcaption>The master console in use during the porcine cholecystectomy.</figcaption></figure>
+    <figure><a href="assets/gallery/g_master_wrist.jpg"><img src="assets/gallery/g_master_wrist.jpg" alt="" loading="lazy"></a><figcaption>The custom 2-DoF direct-drive wrist with continuous grasp sensing on each master arm.</figcaption></figure>
+    <figure><a href="assets/gallery/g_master_hook.jpg"><img src="assets/gallery/g_master_hook.jpg" alt="" loading="lazy"></a><figcaption>Cautery hook through a trocar, porcine in vivo.</figcaption></figure>
+    <figure><a href="assets/gallery/g_uwb_node.jpg"><img src="assets/gallery/g_uwb_node.jpg" alt="" loading="lazy"></a><figcaption>One UWB node: base mount, DWM3001CDK, IMU and battery; three of them form the kinematic logger.</figcaption></figure>
+    <figure><a href="assets/gallery/g_uwb_bench.jpg"><img src="assets/gallery/g_uwb_bench.jpg" alt="" loading="lazy"></a><figcaption>Three distances to sub-millimetre precision through the drape, on the phantom bench.</figcaption></figure>
+    <figure><a href="assets/gallery/g_vision_rig.jpg"><img src="assets/gallery/g_vision_rig.jpg" alt="" loading="lazy"></a><figcaption>The magnetometer-free logger validated against an FR3 holding the instrument through the trocar.</figcaption></figure>
+    <figure><a href="assets/gallery/g_vision_live.jpg"><img src="assets/gallery/g_vision_live.jpg" alt="" loading="lazy"></a><figcaption>Tracking the instrument tip live during teleoperation.</figcaption></figure>
+    <figure><a href="assets/gallery/g_sim_reconstruct.jpg"><img src="assets/gallery/g_sim_reconstruct.jpg" alt="" loading="lazy"></a><figcaption>Specimen-specific organ reconstruction from a single fixed-view RGB-D recording.</figcaption></figure>
+    <figure><a href="assets/gallery/g_sim_bimanual.jpg"><img src="assets/gallery/g_sim_bimanual.jpg" alt="" loading="lazy"></a><figcaption>Bimanual grasp and lift in the reconstructed scene, through 6 mm trocars.</figcaption></figure>
+    <figure><a href="assets/gallery/g_us_phantom.jpg"><img src="assets/gallery/g_us_phantom.jpg" alt="" loading="lazy"></a><figcaption>Contact-adaptive ultrasound monitoring on a dynamic bladder phantom.</figcaption></figure>
+    <figure><a href="assets/gallery/g_humanoid.jpg"><img src="assets/gallery/g_humanoid.jpg" alt="" loading="lazy"></a><figcaption>Fourier GR1 in Isaac Sim 5.0, the nut-pouring environment of my GR00T tutorial at INRoL.</figcaption></figure>
+    <figure><a href="assets/gallery/g_tactile_benchmark.jpg"><img src="assets/gallery/g_tactile_benchmark.jpg" alt="" loading="lazy"></a><figcaption>Tactile benchmark: FEM ground truth, the CRISP module and their difference for four indenters.</figcaption></figure>
+  </div>
+  <p class="small muted">Videos and figures are from the respective manuscripts and belong to their authors at Rosota, Seoul National University Hospital and Seoul National University.</p>
 </section>
 
 <section id="publications" class="wrap">
