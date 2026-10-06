@@ -92,8 +92,8 @@ section { padding: 46px 0 12px; }
 .now { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 4px 0 30px; }
 @media (max-width: 720px) { .now { grid-template-columns: 1fr; } }
 .now > div { border-left: 3px solid var(--navy); padding: 2px 0 2px 14px; }
-.now .k { font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); border: 0; padding: 0; margin-bottom: 4px; }
-.now .v { font-size: 16px; border: 0; padding: 0; }
+.now .k { display: block; font-family: var(--sans); font-size: 12.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); border: 0; padding: 0; margin-bottom: 4px; }
+.now .v { display: block; font-size: 16px; border: 0; padding: 0; }
 
 /* research */
 .work { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: start; padding: 26px 0; border-top: 1px solid var(--rule); }
