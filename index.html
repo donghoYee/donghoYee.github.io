@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dongho Yee</title>
+<meta name="description" content="Dongho Yee: co-founder and CTO of Rosota, researcher at Seoul National University Hospital, and mechanical engineering and computer science student at Seoul National University. Surgical robot learning, sensing hardware, and physical-interaction data.">
+<meta property="og:title" content="Dongho Yee">
+<meta property="og:description" content="Surgical robot learning from surgeons' own instruments. Co-founder & CTO, Rosota.">
+<meta property="og:image" content="https://donghoyee.github.io/assets/or_invivo.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Dongho Yee</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#earlier">Earlier work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="cta" href="Dongho_Yee_CV.pdf">CV (PDF)</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap grid">
+    <div>
+      <h1>Dongho Yee</h1>
+      <p class="role">Co-founder &amp; CTO, Rosota Inc. · Researcher, Seoul National University Hospital · B.S. candidate in Mechanical Engineering &amp; Computer Science, Seoul National University</p>
+      <p class="lead">I work on the instruments, data pipelines and learning systems that let surgical robots learn from surgeons' own hands. In 2026 I co-founded Rosota, a spin-off of Seoul National University Hospital, and led its first study: a policy trained only on recordings from surgeons' hand-held laparoscopic instruments completed appendectomies in three of four live rabbits.</p>
+      <p>Before this I ran a small AI startup for three years, worked on GPU code for diffusion models at FriendliAI, and served eighteen months as an attack-helicopter mechanic in the Korean army.</p>
+      <ul class="facts">
+        <li class="strong">Dual citizen · United States &amp; Republic of Korea</li>
+        <li>Born 2003, Indiana, USA</li>
+        <li>Based in Seoul</li>
+        <li>English and Korean, both native</li>
+      </ul>
+      <div class="links">
+        <a href="mailto:dongho0127@snu.ac.kr">dongho0127@snu.ac.kr</a>
+        <a href="mailto:dongho.yee@rosota.run">dongho.yee@rosota.run</a>
+        <a href="https://www.linkedin.com/in/imdanielyee">LinkedIn</a>
+        <a href="https://orcid.org/0009-0006-6865-3755"><span class="orcid">iD</span>ORCID 0009-0006-6865-3755</a>
+        <a href="https://www.rosota.ai">rosota.ai</a>
+        <a href="Dongho_Yee_CV.pdf">CV (PDF)</a>
+        <a href="Dongho_Yee_Statement.pdf">Personal statement (PDF)</a>
+      </div>
+    </div>
+    <img src="assets/profile.jpg" alt="Portrait of Dongho Yee" width="190" height="190">
+  </div>
+</header>
+
+<section class="wrap" style="padding-top:10px">
+  <div class="now">
+    <div><div class="k">Now</div><div class="v">CTO at Rosota: SurgiLogger, the dual-FR3 surgical platform, and the control &amp; policy team. First human operating-room data collection planned for November 2026.</div></div>
+    <div><div class="k">Research</div><div class="v">MEDISC Lab, Seoul National University Hospital (Prof. Hyoun-Joong Kong) and INRoL, SNU (Prof. Dongjun Lee). Six ICRA 2027 submissions, two as first author.</div></div>
+    <div><div class="k">Study</div><div class="v">B.S. in Mechanical Engineering and Computer Science &amp; Engineering, Seoul National University, expected August 2027. Teaching assistant for a graduate course on robot foundation models in Fall 2025.</div></div>
+  </div>
+</section>
+
+<section id="research" class="wrap">
+  <h2>Research</h2>
+
+  <article class="work">
+    <div class="media">
+      <figure>
+        <video controls preload="metadata" poster="assets/video_poster.jpg" playsinline>
+          <source src="assets/icra2027_invivo.mp4" type="video/mp4">
+        </video>
+        <figcaption>Supplementary video of the ICRA 2027 submission (2 min 41 s): from hand-held demonstrations to in-vivo execution.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/or_invivo.jpg" alt="Two Franka FR3 arms holding laparoscopic instruments through trocars in an anesthetized rabbit, with the supervising console at right" loading="lazy">
+        <figcaption>Two Franka FR3 arms under policy control during a live-rabbit appendectomy at Seoul National University Hospital.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="kicker">Rosota · first author · ICRA 2027 submission</div>
+      <h3>Learning laparoscopic appendectomy from surgeons' own instruments</h3>
+      <p>Most minimally invasive surgery is still done by hand, and the surgeon's instrument motion is lost when the operation ends. We record it instead, with a small logger clipped to the surgeon's ordinary instrument, and train a surgical robot policy on nothing else.</p>
+      <ul>
+        <li><strong>SurgiLogger</strong> recovers roll, depression, insertion depth and jaw opening from an IMU, a time-of-flight sensor and a Hall sensor; 0.17–0.42° attitude and 1.36 mm depth RMS against a Franka FR3 ground truth.</li>
+        <li><strong>Latency matching.</strong> Each sensor channel reaches the log with its own delay; rewinding each by its measured latency raised closed-loop lift success from 19% to 81%.</li>
+        <li><strong>Closed-loop policy selection.</strong> 31 candidate configurations were run in an Isaac Sim scene reconstructed from depth maps of real organs; a frozen DINOv3 backbone cut trocar violations from 88% to 6% relative to ResNet-18.</li>
+        <li><strong>In vivo.</strong> Retrained on 849 demonstrations from four live rabbits, the diffusion policy completed the appendectomy with electrosurgery in three of four further animals under the surgeon's supervision (peak RCM error 0.84 mm; all animals healthy at seven days). To our knowledge the first learned policy to fire electrosurgery in a live animal.</li>
+      </ul>
+      <div class="refs">
+        <a href="https://arxiv.org/abs/2609.25625">arXiv:2609.25625</a>
+        <a href="https://github.com/Rosota-Research/ICRA2027-Invivo-main">Dataset</a>
+        <a href="https://www.rosota.ai/posts/instrument-mounted-demonstrations-in-vivo">Project page</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="work flip">
+    <div class="media">
+      <figure>
+        <div class="pair">
+          <img src="assets/surgilogger.jpg" alt="SurgiLogger clipped to the shaft of a laparoscopic grasper" loading="lazy">
+          <img src="assets/surgilogger_open.jpg" alt="SurgiLogger with its enclosure open, showing the microcontroller, sensors and battery" loading="lazy">
+        </div>
+        <figcaption>SurgiLogger on a standard grasper, closed and open: nRF52840, BNO085 IMU, VL53L1X time-of-flight sensor, Hall sensor on the handle, 1000 mAh cell, BLE streaming at 50–200 Hz.</figcaption>
+      </figure>
+      <figure>
+        <div class="pair">
+          <img src="assets/endoscope_lift.jpg" alt="Endoscope view: the policy has closed the grasper on the appendix and lifts it" loading="lazy">
+          <img src="assets/rabbits_grid.jpg" alt="Endoscope frames from the four live-rabbit rollouts" loading="lazy">
+        </div>
+        <figcaption>Left: a rollout at 20 s, the grasper lifting the appendix toward the dissector. Right: the four in-vivo rollouts; three completed the appendectomy.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="kicker">Rosota · device and data</div>
+      <h3>SurgiLogger</h3>
+      <p>I designed the device end to end: mechanics, firmware, the BLE link, calibration against the robot, and the offline alignment that turns raw streams into observation–action pairs. Nothing is added to the part of the instrument that enters the patient, so surgeons work as usual and the logger runs a full operating-room day on one charge. The current version adds a strain gauge that senses the interaction force between the instrument tip and tissue, so that policies can learn how hard a surgeon pulls, not only where the instrument goes.</p>
+      <p>The company's first patent application, <em>Detachable Surgical Data Recording Apparatus for Manual Laparoscopic Surgical Instrument</em> (KR 10-2026-0150277, 14 claims), and its first design application (KR 30-2026-0037733) name me as lead inventor. The two demonstration corpora recorded with it, 533 ex-vivo and 849 in-vivo episodes, are released with the paper.</p>
+      <p>Next: the first human cases at Seoul National University Hospital (IRB under review, PI Prof. Kyu Eun Lee), and force-aware policies trained on the new channel.</p>
+    </div>
+  </article>
+
+  <article class="work">
+    <div class="media">
+      <figure>
+        <img src="assets/uwb_node.jpg" alt="Exploded CAD view of the clip-on UWB node: base mount, DWM3001CDK board, IMU and LiPo battery" loading="lazy">
+        <figcaption>One UWB node: a 3D-printed base mount that clips to the shaft, a Qorvo DWM3001CDK, a BNO085 IMU and a 1000 mAh cell. Three nodes range to one another through the sterile drape.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="kicker">Rosota · co-first author · ICRA 2027 submission</div>
+      <h3>Tool-tip localization through the drape with UWB carrier phase</h3>
+      <p>In the operating room an instrument's absolute position cannot be read from its own sensors: the trocar's location is unknown to them, the sterile drape blocks every optical path, and the metal in the field disturbs electromagnetic trackers. What is left is time-of-flight ranging, which scatters by centimeters. We built a ranging sensor accurate to a millimeter instead: an ultra-wideband node clipped near the handle of each instrument and one on the endoscope, all outside the sterile barrier, ranging to one another by carrier phase at σ = 0.10–0.33 mm and 35–46 Hz among metal instruments.</p>
+      <p>Three distances cannot locate two free-floating instruments, but each shaft pivots at its trocar, so its antenna keeps a single degree of freedom. Two unknowns now face three measurements; the spare equation exposes a wrong integer or a slipped mount instead of absorbing it, and the same solve returns both tool tips in the endoscope frame. The logger was carried into a live rabbit appendectomy.</p>
+      <div class="refs"><a href="https://www.rosota.ai/posts/drape-compatible-tool-tip-localization">Project page</a></div>
+    </div>
+  </article>
+
+  <article class="work flip">
+    <div class="media">
+      <figure>
+        <img src="assets/fr3_rig.jpg" alt="Laboratory with two Franka FR3 arms above a laparoscopic phantom and master console arms in the foreground" loading="lazy">
+        <figcaption>The lab at Seoul National University Hospital: the dual-FR3 patient-side platform (back) and the master console built from two general-purpose arms (front).</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/sim_selection.jpg" alt="Simulated endoscope view of two instruments grasping reconstructed rabbit organs" loading="lazy">
+        <figcaption>Closed-loop policy selection in an Isaac Sim scene rebuilt from depth maps of real organs.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="kicker">Rosota · platform and team</div>
+      <h3>The platform behind six ICRA 2027 submissions</h3>
+      <p>I lead Rosota's device, instrument and surgical-robot (control &amp; policy) teams. The dual-FR3 laparoscopic platform with its 1 kHz remote-center-of-motion controller, the imitation-learning stack, and the simulation protocol are shared across the lab's work, and I am a co-author on all six papers the team submitted to ICRA 2027 between June and September 2026:</p>
+      <ul>
+        <li>a magnetometer-free instrument-state logger fusing inertial, range and visual sensing (1.21 mm RMS against the robot);</li>
+        <li>a surgical master console built from two general-purpose 6-DoF arms, validated in a porcine cholecystectomy;</li>
+        <li>a contact-stable deformable-tissue simulator reconstructed from a single RGB-D recording;</li>
+        <li>contact-adaptive robotic ultrasound from robot-free image–motion demonstrations.</li>
+      </ul>
+      <p>Rosota, founded with surgeons and engineers from the MEDISC Lab, closed a seed round led by FuturePlay (with Schmidt and ZDVC, US$1.1M) in mid-2026 and was selected for Korea's TIPS R&amp;D program (US$0.7M) in October 2026.</p>
+      <div class="refs"><a href="https://www.rosota.ai">All papers and videos at rosota.ai</a><a href="https://rosota.run">Company site</a></div>
+    </div>
+  </article>
+
+  <article class="work">
+    <div class="media">
+      <figure>
+        <img src="assets/humanoid_gr00t.jpg" alt="Fourier GR1 humanoid in Isaac Sim facing a table with a tray, a bowl and a nut" loading="lazy">
+        <figcaption>Fourier GR1 in Isaac Sim 5.0: the nut-pouring environment from my GR00T tutorial.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/tactile.jpg" alt="Two pressure maps of a cross-shaped indenter: FEM ground truth and the Pasternak model" loading="lazy">
+        <figcaption>Tactile module: FEM ground truth (left) against my Pasternak model (right) for a cross-shaped indenter.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="kicker">INRoL, Seoul National University · Prof. Dongjun Lee</div>
+      <h3>Humanoid foundation models and tactile simulation</h3>
+      <p>I joined INRoL in September 2025, just as NVIDIA released Isaac GR00T, and built a bridge between Isaac Sim and GR00T N1.5 for the Fourier GR1: fine-tuning and roll-out tutorials, pick-and-place and nut-pouring environments, an evaluation pipeline, and notes on what breaks. That "RFM Wiki" became the hands-on material of the graduate course <em>Advanced Topics in Mechanical Design 1: AI Robotics and Robot Foundation Models</em> (Prof. Yongseok Lee, now at DGIST), where I was the teaching assistant in Fall 2025.</p>
+      <p>My senior thesis, with Ph.D. student Somang Lee, is on tactile sensing for humanoid hands. I added a Pasternak-foundation tactile module to the lab's CRISP simulator so that stress propagates between neighboring taxels, which Winkler-type contact models cannot do, and benchmarked seven simulators against FEniCSx FEM on four indenters: peak-pressure error of 4–17% at about 0.5 ms per frame on a 60 × 60 grid. I am now identifying the elastomer, friction and per-taxel parameters of a commercial fingertip sensor from robot indentation data with a differentiable forward model, for CRISP and Isaac Sim/Newton.</p>
+    </div>
+  </article>
+</section>
+
+<section id="publications" class="wrap">
+  <h2>Publications</h2>
+  <p class="small muted">* first or co-first author · † corresponding author · [1]–[6] were submitted to IEEE ICRA 2027 in September 2026 and are under review.</p>
+  <ol class="pubs">
+    <li><span class="me">D. Yee*</span>, J. Oh, J. Lee, J. Lee, Y. Seo, S. Jeong, M. Kim, S. Shim, Y. Noh, H. Choi, Y. Kong, K. E. Lee†, H.-J. Kong†. <span class="t">From Instrument-Mounted Demonstrations to In-Vivo Execution: Learning Bimanual Laparoscopic Appendectomy Without Robot-Collected Demonstrations.</span> <span class="l"><a href="https://arxiv.org/abs/2609.25625">arXiv:2609.25625</a> · <a href="https://github.com/Rosota-Research/ICRA2027-Invivo-main">dataset</a> · <a href="https://www.rosota.ai/posts/instrument-mounted-demonstrations-in-vivo">video</a></span></li>
+    <li>J. Lee*, <span class="me">D. Yee*</span>, M. Kim, Y. Noh, S. Shim, J. Oh, Y. Seo, J. Lee, S. Jeong, H. Choi, H.-J. Kong†. <span class="t">Drape-Compatible Tool-Tip Localization for Hand-Held Laparoscopic Instruments via UWB Carrier-Phase Ranging and Trocar-Constrained Geometry.</span> <span class="l"><a href="https://www.rosota.ai/posts/drape-compatible-tool-tip-localization">project page</a></span></li>
+    <li>J. Lee*, <span class="me">D. Yee</span>, J. Oh, J. Lee, Y. Seo, S. Jeong, M. Kim, S. Shim, Y. Noh, H. Choi, Y. Kong, H.-J. Kong†. <span class="t">Recording Hand-Held Laparoscopic Instrument Motion in the Operating Room: Magnetometer-Free Fusion of Inertial, Range and Visual Sensing.</span> <span class="l"><a href="https://www.rosota.ai/posts/recording-hand-held-instrument-motion">project page</a></span></li>
+    <li>M. Kim*, S. Shim*, <span class="me">D. Yee</span>, Y. Noh, J. Oh, Y. Seo, J. Lee, J. Lee, S. Jeong, H. Choi, Y. Kong, H.-J. Kong†. <span class="t">Surgical Master Console Using General-Purpose Robot Arms and a Separable Articulated Distal Interface: Porcine In-Vivo Evaluation.</span> <span class="l"><a href="https://www.rosota.ai/posts/surgical-master-console-general-purpose-arms">project page</a></span></li>
+    <li>J. Oh*, <span class="me">D. Yee</span>, J. Lee, J. Lee, Y. Seo, S. Jeong, M. Kim, S. Shim, Y. Noh, H. Choi, Y. Kong, H.-J. Kong†. <span class="t">Contact-Stable Deformable Tissue Simulation Using Implicit Integration and Live-Pose Grasp Constraints for Laparoscopic Surgery Robot Policy Evaluation.</span> <span class="l"><a href="https://www.rosota.ai/posts/contact-stable-deformable-tissue-simulation">project page</a></span></li>
+    <li>S. Jeong*, M. Kim, <span class="me">D. Yee</span>, J. Oh, Y. Seo, J. Lee, J. Lee, S. Shim, Y. Noh, Y. Kong, H.-J. Kong†. <span class="t">Contact-Adaptive Robotic Ultrasound Probe Control for Tissue Exploration and Continuous Task-Relevant Visualization Using Robot-Free Image–Motion Demonstration.</span> <span class="l"><a href="https://www.rosota.ai/posts/contact-adaptive-robotic-ultrasound">project page</a></span></li>
+    <li>Y. Lee, H. Park, H. Kim, H. Ji, <span class="me">D. Yee</span>, D. Lee. <span class="t">Human-in-the-Loop Object Segmentation for 3D Gaussian Splatting via Finger-based VR Interface.</span> <span class="v">Advanced Intelligent Systems 8(8), e202501025, 2026.</span> <span class="l"><a href="https://doi.org/10.1002/aisy.202501025">doi:10.1002/aisy.202501025</a></span></li>
+  </ol>
+
+  <h2 style="margin-top:34px">Patents</h2>
+  <dl class="plain">
+    <dt>KR 10-2026-0150277</dt><dd><em>Detachable Surgical Data Recording Apparatus for Manual Laparoscopic Surgical Instrument.</em> Patent application filed 11 Aug 2026 with domestic priority to 10-2026-0143776 (3 Aug 2026); 14 claims, examination requested. Inventors: <strong>D. Yee</strong>, Y. Seo, J. Oh. Applicant: Rosota Inc.</dd>
+    <dt>KR 30-2026-0037733</dt><dd><em>Sensing and data-recording device for a laparoscopic instrument</em> (partial design). Design application filed 1 Oct 2026. Creators: <strong>D. Yee</strong>, Y. Seo, J. Oh. Applicant: Rosota Inc.</dd>
+  </dl>
+
+  <h2 style="margin-top:34px">Teaching</h2>
+  <dl class="plain">
+    <dt>Fall 2025</dt><dd>Teaching assistant, <em>Advanced Topics in Mechanical Design 1: AI Robotics and Robot Foundation Models</em> (graduate course, Prof. Yongseok Lee, now at DGIST). My Isaac Sim / GR00T tutorials and the RFM Wiki were the course's hands-on material.</dd>
+  </dl>
+</section>
+
+<section id="earlier" class="wrap">
+  <h2>Earlier work</h2>
+  <p>From August 2022 to August 2025 I ran <strong>Lighter Links AI</strong>, a four-person startup in Seoul. We shipped five products:</p>
+  <div class="cards">
+    <div class="card"><img src="assets/clemory_logo_square.png" alt=""><h4>Clemory</h4><div class="y">2023 – 2024</div><p>Personal knowledge base built on RAG with a self-hosted multimodal LLM. Launched on Product Hunt.</p></div>
+    <div class="card"><img src="assets/isityou_logo_square.png" alt=""><h4>IsItYou</h4><div class="y">2024</div><p>A chatbot trained to speak as its owner, shared with friends and strangers. #3 Product of the Day on Product Hunt.</p></div>
+    <div class="card"><img src="assets/dabom_logo_square.png" alt=""><h4>Dabom Search API</h4><div class="y">2024</div><p>Real-time Korean web, news, shopping and weather data for LLM applications, with a LangChain integration.</p></div>
+    <div class="card"><img src="assets/symphony_logo_square.png" alt=""><h4>Symphony</h4><div class="y">2024 – 2025</div><p>A browser-based cloud desktop whose built-in agent operates the machine through computer vision.</p></div>
+    <div class="card"><img src="assets/actualcode_logo_square.png" alt=""><h4>ActualCode</h4><div class="y">2025</div><p>Open-source CLI coding agent for hardware projects: reads datasheets, asks for photos of your wiring, writes and runs the code.</p></div>
+  </div>
+  <dl class="plain" style="margin-top:22px">
+    <dt>Dec 2023 – Mar 2024</dt><dd><strong>FriendliAI</strong>, research intern (Prof. Byung-Gon Chun). Low-level GPU programming for the training and inference of image-generation models.</dd>
+    <dt>2024 – Aug 2025</dt><dd><strong>Republic of Korea Army</strong>, attack-helicopter mechanic. Maintenance crew for MD 500 Defender helicopters; completed the full eighteen-month service.</dd>
+    <dt>2021 – 2022</dt><dd>Taught myself machine learning from the ground up, re-implementing deep learning in NumPy before using a framework, and tutored students in vision and language models.</dd>
+  </dl>
+</section>
+
+<section id="contact" class="wrap">
+  <h2>Contact</h2>
+  <dl class="plain">
+    <dt>Email</dt><dd><a href="mailto:dongho0127@snu.ac.kr">dongho0127@snu.ac.kr</a> · <a href="mailto:dongho.yee@rosota.run">dongho.yee@rosota.run</a></dd>
+    <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/imdanielyee">linkedin.com/in/imdanielyee</a></dd>
+    <dt>ORCID</dt><dd><a href="https://orcid.org/0009-0006-6865-3755"><span class="orcid">iD</span> 0009-0006-6865-3755</a></dd>
+    <dt>Rosota</dt><dd><a href="https://www.rosota.ai">rosota.ai</a> (research) · <a href="https://rosota.run">rosota.run</a> (company)</dd>
+    <dt>Documents</dt><dd><a href="Dongho_Yee_CV.pdf">Curriculum vitae</a> · <a href="Dongho_Yee_Statement.pdf">Personal statement</a></dd>
+  </dl>
+  <p style="margin-top:18px">I expect to finish my B.S. in August 2027 and am thinking about where to do a Ph.D. I am glad to talk about physical-interaction data for surgical robot learning, force- and tactile-aware policies, and how to evaluate shared autonomy, and to set up collaborations with Rosota's data and platform.</p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dongho Yee</span>
+    <span>Updated October 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
