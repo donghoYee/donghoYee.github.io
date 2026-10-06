@@ -151,3 +151,6 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 .gallery img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 8px; box-shadow: var(--shadow); transition: transform .15s ease; }
 .gallery a:hover img { transform: translateY(-2px); }
 .gallery figcaption { font-family: var(--sans); font-size: 12.5px; color: var(--slate); margin-top: 7px; line-height: 1.4; }
+
+.card .clinks { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 10px; font-family: var(--sans); font-size: 13px; }
+.card .clinks a.play { font-weight: 600; }
